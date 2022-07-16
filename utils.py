@@ -1,4 +1,5 @@
 import re
+from typing import Iterable
 
 from classes import InputData
 from exceptions import IncorrectCommand
@@ -6,23 +7,24 @@ from exceptions import IncorrectCommand
 # filter, map, unique, sort, limit
 
 
-def build_result_data(cmd, value, data):
+def build_result_data(cmd: str, value: str, data: Iterable):
     if cmd == "regex":
         regex = re.compile(value)
         return filter(lambda entry: regex.search(entry), data)
+
     elif cmd == 'filter':
         # res_through_lambda = [entry for entry in filter(lambda entry: value in entry, data)]
         res_through_list_comprehensions = [entry for entry in data if value in entry]
         return res_through_list_comprehensions
 
     elif cmd == 'map':
-        res_through_lambda = [entry for entry in map(lambda entry: entry.split()[int(value)], data)]
+        res_through_lambda = map(lambda entry: entry.split()[int(value)], data)
         # res_through_list_comprehensions = [entry.split()[int(value)] for entry in data]
         return res_through_lambda
 
     elif cmd == 'limit':
         if value in ['', '0']:
-            value = 10
+            value = '10'
 
         def data_gen(file_data, iterations):
             counter = 0

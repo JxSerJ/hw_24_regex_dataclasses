@@ -1,10 +1,13 @@
+from dataclasses import dataclass
+
+
+@dataclass
 class InputData:
-    def __init__(self, file_name, cmd1, value1, cmd2, value2):
-        self.file_name = file_name
-        self.cmd1 = cmd1
-        self.value1 = value1
-        self.cmd2 = cmd2
-        self.value2 = value2
+    file_name: str
+    cmd1: str
+    value1: str
+    cmd2: str
+    value2: str
 
     def __repr__(self):
         return f'Request:\n' \

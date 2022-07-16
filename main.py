@@ -27,14 +27,14 @@ def perform_query():
         cmd2 = request.form.get('cmd2', None)
         value2 = request.form.get('value2', None)
 
-    file_name = os.path.join(DATA_DIR, file_name)
+    file_name: str = os.path.join(DATA_DIR, file_name)
     if not os.path.exists(file_name):
         return app.response_class('File not found', content_type="text/plain", status=400)
 
-    query = InputData(file_name, cmd1, value1, cmd2, value2)
+    query: InputData = InputData(file_name, cmd1, value1, cmd2, value2)
 
     try:
-        result = '\n'.join(execute_query(query))
+        result: str = '\n'.join(execute_query(query))
     except IncorrectCommand:
         return app.response_class('Incorrect command', content_type="text/plain", status=400)
     except (TypeError, ValueError):
