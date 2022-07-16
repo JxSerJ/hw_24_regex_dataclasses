@@ -13,38 +13,10 @@ payload = [
     },
     {
         'file_name': 'apache_logs.txt',
-        'cmd1': 'filter',
-        'value1': 'GET',
-        'cmd2': 'limit',
-        'value2': 'hjgjk'
-    },
-    {
-        'file_name': 'apache_logs.txt',
-        'cmd1': 'limit',
-        'value1': '0',
-        'cmd2': 'unique',
-        'value2': ''
-    },
-    {
-        'file_name': 'apache_logs.txt',
-        'cmd1': 'limit',
-        'value1': '0',
+        'cmd1': 'regex',
+        'value1': 'images/\\w+\\.png',
         'cmd2': 'sort',
-        'value2': 'desc'
-    },
-    {
-        'file_name': '543534534_logs.txt',
-        'cmd1': 'limit',
-        'value1': '1332',
-        'cmd2': 'unique',
-        'value2': ''
-    },
-    {
-        'file_name': 'apache_logs.txt',
-        'cmd1': 'gdfgdfhfd',
-        'value1': '1332',
-        'cmd2': 'unibfdsgerque',
-        'value2': ''
+        'value2': 'asc'
     }
 ]
 

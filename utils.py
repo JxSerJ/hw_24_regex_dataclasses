@@ -1,3 +1,5 @@
+import re
+
 from classes import InputData
 from exceptions import IncorrectCommand
 
@@ -5,7 +7,10 @@ from exceptions import IncorrectCommand
 
 
 def build_result_data(cmd, value, data):
-    if cmd == 'filter':
+    if cmd == "regex":
+        regex = re.compile(value)
+        return filter(lambda entry: regex.search(entry), data)
+    elif cmd == 'filter':
         # res_through_lambda = [entry for entry in filter(lambda entry: value in entry, data)]
         res_through_list_comprehensions = [entry for entry in data if value in entry]
         return res_through_list_comprehensions
